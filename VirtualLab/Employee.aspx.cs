@@ -5,6 +5,7 @@ using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using VirtualLab.BusinessObjects;
 
 namespace VirtualLab
 { /* What is causing the duplication
@@ -37,6 +38,34 @@ namespace VirtualLab
             }
 
 
+        }
+
+        private bool ValidateEmployees(List<VirtualLab.BusinessObjects.Employee> emplist) 
+        {
+            bool result=false;
+            try
+            {
+                if(emplist!=null)
+                {
+                    foreach (VirtualLab.BusinessObjects.Employee emp in emplist)
+                    {
+
+                        if (emp != null) {
+
+                            emp.FirstName = "Subhas";
+                            
+                        }
+                    }
+                    result = true;
+                }
+
+            }
+            catch (Exception)
+            {
+
+                result = false;
+            }
+            return result;
         }
 
         protected void btnRegister_Click(object sender, EventArgs e)
@@ -74,5 +103,6 @@ namespace VirtualLab
         {
             Response.Write("lnkDelete_Command Event" + "<br>");
         }
+
     }
 }
